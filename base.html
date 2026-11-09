@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Community Connect{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">CC</span><span>Community<span class="brand-light">Connect</span><small>SMART COMMUNITY MAINTENANCE</small></span></a>
+  <nav>
+  {% if user %}
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    {% if user.role == 'resident' %}<a href="{{ url_for('report') }}">Report issue</a>{% endif %}
+    <span class="user-pill">{{ user.name }} · {{ user.role|title }}</span>
+    <form class="inline" action="{{ url_for('logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="nav-logout" type="submit">Sign out</button></form>
+  {% else %}
+    <a href="{{ url_for('login') }}">Sign in</a><a class="nav-cta" href="{{ url_for('register') }}">Create account</a>
+  {% endif %}
+  </nav>
+</header>
+<main class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}<div class="flash-stack">{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer><span>Community Connect</span><span>Field project prototype · {{ current_year }}</span></footer>
+</body></html>

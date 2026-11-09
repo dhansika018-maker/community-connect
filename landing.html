@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% block title %}Community Connect — Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> A smarter way to maintain your community</div>
+  <h1>Every issue.<br><span>Seen. Assigned. Resolved.</span></h1>
+  <p class="lead">A shared place for residents to report community problems, managers to coordinate repairs, and everyone to see what happens next.</p>
+  <div class="hero-actions"><a class="btn primary" href="{{ url_for('register') }}">Get started <span>↗</span></a><a class="btn secondary" href="{{ url_for('login') }}">Sign in</a></div>
+  <div class="trust-note"><span class="check-circle">✓</span> Role-based access · Traceable status history · Photo review flags</div></div>
+  <div class="hero-visual"><div class="visual-top"><span>COMMUNITY OVERVIEW</span><span class="live"><i></i> LIVE DEMO</span></div>
+    <div class="visual-stat"><div><small>OPEN REQUESTS</small><strong>08</strong></div><div><small>RESOLVED THIS WEEK</small><strong>24</strong></div><div><small>AVG. RESPONSE</small><strong>2.4h</strong></div></div>
+    <div class="mini-issue"><div class="issue-icon water">≈</div><div><b>Water leakage</b><small>Water Pump A · Block A</small></div><span class="status assigned">Assigned</span></div>
+    <div class="mini-issue"><div class="issue-icon light">☼</div><div><b>Streetlight not working</b><small>Streetlight 07 · North entrance</small></div><span class="status review">Review</span></div>
+    <div class="mini-issue"><div class="issue-icon waste">♧</div><div><b>Garbage not collected</b><small>Garbage Point B · Block B</small></div><span class="status reported">Reported</span></div>
+    <div class="visual-foot"><span class="check-circle">✓</span> Transparent maintenance, from report to proof</div>
+  </div>
+</section>
+<section class="feature-grid">
+<div class="feature"><span class="feature-icon">▦</span><h3>Asset-aware reporting</h3><p>Select an asset or use its QR code to attach the issue to the right location and history.</p></div>
+<div class="feature"><span class="feature-icon">↗</span><h3>Explainable priority</h3><p>Safety, impact, wait time and recurrence contribute to a visible priority score.</p></div>
+<div class="feature"><span class="feature-icon">◎</span><h3>Repair evidence review</h3><p>Photo checks flag duplicates and missing metadata for human review—not automatic accusations.</p></div>
+</section>
+<div class="demo-banner"><div><b>Try the demo</b><p>Use a demo account, or create an account with your own email address.</p></div><a class="btn dark" href="{{ url_for('login') }}">Open dashboard →</a></div>
+{% endblock %}

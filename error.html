@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block title %}{{ code }} · Community Connect{% endblock %}{% block content %}<section class="empty-state error-state"><div class="empty-icon">!</div><h1>{{ code }}</h1><p>{{ message }}</p><a class="btn primary" href="{{ url_for('dashboard') if user else url_for('index') }}">Return</a></section>{% endblock %}

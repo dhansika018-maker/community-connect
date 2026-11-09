@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: community-connect
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --threads 4 --timeout 90
+    healthCheckPath: /
+    disk:
+      name: community-connect-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: COMMUNITY_CONNECT_SECRET
+        generateValue: true
+      - key: COMMUNITY_CONNECT_DATA_DIR
+        value: /var/data
+      - key: COMMUNITY_CONNECT_UPLOAD_DIR
+        value: /var/data/uploads
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: MANAGER_EMAILS
+        sync: false
+      - key: SIGHTENGINE_API_USER
+        sync: false
+      - key: SIGHTENGINE_API_SECRET
+        sync: false
+      - key: AI_REVIEW_THRESHOLD
+        value: "0.65"
